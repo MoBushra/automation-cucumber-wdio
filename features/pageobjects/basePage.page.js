@@ -2,12 +2,18 @@
 * main page object containing all methods, selectors and functionality
 * that is shared across all page objects
 */
-export default class Page {
+export default class BasePage {
+
+    get dropdownMenu() { return $("a[title='My Account']") } 
     /**
     * Opens a sub page of the page
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     open (path) {
-        return browser.url(`https://the-internet.herokuapp.com/${path}`)
+        try {
+            browser.url(`${path}`);
+          } catch (err) {
+            throw new Error(err);
+          }
     }
 }
