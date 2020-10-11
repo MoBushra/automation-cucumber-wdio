@@ -17,4 +17,3 @@ Then(/^I should see a header message saying (.*)$/, async (message) => {
     await expect(AccountPage.headerMessage).toHaveTextContaining(message)
     AccountPage.signOut()
 });
-
