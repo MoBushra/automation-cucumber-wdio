@@ -1,0 +1,32 @@
+{
+  "name": "automation-cucumber-wdio",
+  "version": "1.0.0",
+  "description": "Wdio v6 cucumber automation test",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio wdio.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoBushra/automation-cucumber-wdio.git"
+  },
+  "author": "Mohamed Bushra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoBushra/automation-cucumber-wdio/issues"
+  },
+  "homepage": "https://github.com/MoBushra/automation-cucumber-wdio#readme",
+  "dependencies": {
+    "@babel/register": "^7.11.5",
+    "@wdio/cli": "^6.6.2",
+    "webdriverio": "^6.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@wdio/cucumber-framework": "^6.6.0",
+    "@wdio/local-runner": "^6.6.2",
+    "@wdio/selenium-standalone-service": "^6.6.2",
+    "@wdio/spec-reporter": "^6.6.0"
+  }
+}
