@@ -3,7 +3,7 @@ import BasePage from './basePage.page';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class AccountPage extends BasePage {
+export default class AccountPage extends BasePage {
     /**
      * define selectors using getter methods
      */
@@ -11,10 +11,11 @@ class AccountPage extends BasePage {
 
     get signOutLnk() { return $('.list-inline  ul > li:nth-of-type(5) > a')}
 
-    async signOut() {
-        await (await this.dropdownMenu).click();
-        await (await this.signOutLnk).click();
+    signOut() {
+     this.dropdownMenu.click();
+     this.signOutLnk.click();
     }
+    
 }
 
-export default new AccountPage();
+export const accountPage = new AccountPage();

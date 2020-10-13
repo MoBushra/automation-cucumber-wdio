@@ -1,28 +1,34 @@
 import BasePage from './basePage.page';
-import LoginPage from './login.page';
-import RegisterPage from './register.page';
+import { loginPage } from './login.page';
+import { registerPage } from './register.page';
 
-class HomePage extends BasePage {
+export default class HomePage extends BasePage {
 
     get loginLink() { return $('.list-inline  ul > li:nth-of-type(2) > a')}
-
     get registerLink() { return $('.list-inline  ul > li:nth-of-type(1) > a')}
+    get searchInputElement() { return $('div#search > input[name="search"]')}
+    get btnSearch() { return $('.btn.btn-default.btn-lg')}
 
     openHomePage() { 
         super.open('/') }
 
-    async userLogin(username, password) {
-        await (await this.dropdownMenu).click()
-        await (await this.loginLink).click()
-        LoginPage.login(username, password)
+    userLogin(username, password) {
+        this.dropdownMenu.click()
+        this.loginLink.click()
+        loginPage.login(username, password)
     }
 
-    async userRegister() {
-        await (await this.dropdownMenu).click()
-        await (await this.registerLink).click()
-        RegisterPage.register()
+    userRegister() {
+        this.dropdownMenu.click()
+        this.registerLink.click()
+        registerPage.register()
+    }
+
+    searchProducts(searchItem) {
+        this.searchInputElement.setValue(searchItem);
+        this.btnSearch.click();
     }
 
 }
 
-export default new HomePage();
+export const homePage = new HomePage();

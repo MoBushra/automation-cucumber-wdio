@@ -1,19 +1,19 @@
 import { Given, When, Then } from 'cucumber';
 
-import HomePage from '../pageobjects/home.page'
-import AccountPage from '../pageobjects/account.page';
+import { homePage } from '../pageobjects/home.page'
+import { accountPage } from '../pageobjects/account.page';
 
 
 Given(/^I am on the home page$/, () => {
-    HomePage.openHomePage()
+    homePage.openHomePage()
 });
 
 When(/^I login with (.*) and (.*)$/, (username, password) => {
-    HomePage.userLogin(username, password)
+    homePage.userLogin(username, password)
 });
 
-Then(/^I should see a header message saying (.*)$/, async (message) => {
-    await expect(AccountPage.headerMessage).toBeExisting()
-    await expect(AccountPage.headerMessage).toHaveTextContaining(message)
-    AccountPage.signOut()
+Then(/^I should see a header message saying (.*)$/, (message) => {
+    expect(accountPage.headerMessage).toBeExisting()
+    expect(accountPage.headerMessage).toHaveTextContaining(message)
+    accountPage.signOut()
 });

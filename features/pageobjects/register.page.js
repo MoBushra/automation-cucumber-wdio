@@ -2,7 +2,7 @@ import BasePage from './basePage.page';
 import * as faker from 'faker';
 
 
-class RegisterPage extends BasePage {
+export default class RegisterPage extends BasePage {
     
     get firstNameElem() { return $('input#input-firstname') }
 
@@ -33,23 +33,23 @@ class RegisterPage extends BasePage {
 
     get btnContinue() { return $('input[value="Continue"]') }
     
-   async register() { 
-       await (await this.firstNameElem).setValue(faker.name.firstName())
-       await (await this.lastNameElem).setValue(faker.name.lastName())
-       await (await this.userEmailElem).setValue(faker.internet.email())
-       await (await this.userPhoneNumberElem).setValue(`+44${faker.phone.phoneNumber('07#########')}`)
-       await (await this.userAddresselem).setValue(faker.address.streetAddress())
-       await (await this.userCityElem).setValue(faker.address.city())
-       await (await this.userPostCodeElem).setValue(faker.address.zipCode('W# #SN'))
-       await (await this.userRegion(3516)).click()
-       await (await this.userPassElem).setValue('test12345')
-       await (await this.userPassConfirmElem).setValue('test12345')
+   register() { 
+       this.firstNameElem.setValue(faker.name.firstName())
+       this.lastNameElem.setValue(faker.name.lastName())
+       this.userEmailElem.setValue(faker.internet.email())
+       this.userPhoneNumberElem.setValue(`+44${faker.phone.phoneNumber('07#########')}`)
+       this.userAddresselem.setValue(faker.address.streetAddress())
+       this.userCityElem.setValue(faker.address.city())
+       this.userPostCodeElem.setValue(faker.address.zipCode('W# #SN'))
+       this.userRegion(3516).click()
+       this.userPassElem.setValue('test12345')
+       this.userPassConfirmElem.setValue('test12345')
 
        // Accept the Privacy Policy
-       await (await this.agreePrivacyPolicy).click()
-       await (await this.btnContinue).click()
+       this.agreePrivacyPolicy.click()
+       this.btnContinue.click()
    }
     
 }
 
-export default new RegisterPage();
+export const registerPage = new RegisterPage();

@@ -3,7 +3,7 @@ import BasePage from './basePage.page';
 /**
  * sub page containing specific selectors and methods for a specific page
  */
-class LoginPage extends BasePage {
+export default class LoginPage extends BasePage {
     /**
      * define selectors using getter methods
      */
@@ -15,11 +15,11 @@ class LoginPage extends BasePage {
      * a method to encapsule automation code to interact with the page
      * e.g. to login using username and password
      */
-    async login (username, password) {
-        await (await this.inputEmail).setValue(username);
-        await (await this.inputPassword).setValue(password);
-        await (await this.btnLogin).click();
+    login (username, password) {
+        this.inputEmail.setValue(username);
+        this.inputPassword.setValue(password);
+        this.btnLogin.click();
     }
 }
 
-export default new LoginPage();
+export const loginPage = new LoginPage();
